@@ -18,7 +18,7 @@ warnings.filterwarnings('ignore')
 # Any results you write to the current directory are saved as output.
 
 x_load = np.load('C:/Users/matti/Downloads/archive/images-224/X.npy')
-y_load = np.load('C:/Users/matti/Downloads/archive/images-224/X.npy')
+y_load = np.load('C:/Users/matti/Downloads/archive/images-224/Y.npy')
 
 img_size = 64
 print('X_data shape:', np.array(x_load).shape)
@@ -35,8 +35,8 @@ image_index_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # plt.show()
 
 
+
 X = x_load.reshape((len(x_load), -1)) 
-print(X.shape)
 train = X
 test = X[image_index_list]
 n_pixels = X.shape[1]
@@ -94,4 +94,20 @@ for i in range(10):
     sub.imshow(completed_digits.reshape(image_shape),interpolation="nearest")
     sub.axis("off")
 
+plt.show()
+
+
+n_components = 5
+(n_samples, n_features) = X.shape
+estimator = decomposition.PCA(n_components=n_components, svd_solver='randomized', whiten=True)
+estimator.fit(X)
+components_ = estimator.components_
+images = components_[:n_components]
+plt.figure(figsize=(6, 5))
+for i, comp in enumerate(images):
+    vmax = max(comp.max(), -comp.min())
+    plt.imshow(comp.reshape((64, 64)),interpolation='nearest',vmin=-vmax, vmax=vmax)
+    plt.xticks(())
+    plt.yticks(())
+plt.savefig('graph.png')
 plt.show()

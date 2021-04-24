@@ -8,7 +8,7 @@ count = 0
 rgb_weights = [0.2989, 0.5870, 0.1140]
 
 for myFile in files:
-    if count > 2061:
+    if count > 2000:
         break
     print(myFile)
     image = cv2.imread (myFile)
