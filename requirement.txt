@@ -1,0 +1,44 @@
+requirements for CMPT340 inpainting group project
+
+members: Shaoqiang Zou, Mattias Stroman, Che Yu Wu
+
+This program is run on python3
+using a few libraries
+
+listed:
+
+inpaint.py requires the installation of:
+
+numpy
+pandas
+matplotlib.pyplot
+sklearn
+sklearn.linear_model
+time
+os
+warnings
+pathlib
+
+makeNum.py requires installation of:
+glob
+cv2
+numpy
+
+
+installed using - pip install
+
+To run makeNum.py: python makeNum.py ---------
+
+change the location in the code to a folder with the dataset to be 
+changed into numpy files
+
+its defualt will be the folder of the code running and then /trainingData/images-224/*.PNG
+most training data wont be provided based on its large memory size
+
+To run inpaint.py: python inpaint.py -----------
+
+change the path name at line 73 if X.npy isnt stored at the code files location.
+X.npy is the numpy file holding the dataset. Its placed 
+in there for ease of use when its being used in the algorithm
+
+Pop ups will begin when you run the code and exiting them will keep the code running
